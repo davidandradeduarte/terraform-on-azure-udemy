@@ -23,3 +23,6 @@ ssh <public-ip> -i mykey -l demo
 
 ## Destroy the infrastructure
 
+```bash
+terraform destroy
+```
