@@ -53,7 +53,8 @@
     ```
 - We can use a `*.tfvars` file to manage variable default values
 - Resource's reference name must be unique
-- 
+- `*.tfstate` saves the state of created resources. It will be updated if you make manual changes in the cloud provider's UI and once you run `terraform plan`
+- `*.tfstate` files are usually saved on a cloud storage
 
 # Additional notes
 

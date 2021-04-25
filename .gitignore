@@ -62,3 +62,6 @@ override.tf.json
 # example: *tfplan*
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,terraform
+
+first-steps/mykey
+first-steps/mykey.pub
