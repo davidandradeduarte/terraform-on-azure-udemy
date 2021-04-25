@@ -1,0 +1,3 @@
+[submodule "terraform-azure-course"]
+	path = terraform-azure-course
+	url = https://github.com/in4it/terraform-azure-course
