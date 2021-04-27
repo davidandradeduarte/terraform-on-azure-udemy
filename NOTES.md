@@ -47,15 +47,35 @@
     ```terraform
     provider "aws" {}
     resource "aws_instance" "example" {
-    ami = var.AWS_REGION
-    instance_type = "t2.micro"
-}
+        ami = var.AWS_REGION
+        instance_type = "t2.micro"
+    }
     ```
 - We can use a `*.tfvars` file to manage variable default values
 - Resource's reference name must be unique
 - `*.tfstate` saves the state of created resources. It will be updated if you make manual changes in the cloud provider's UI and once you run `terraform plan`
 - `*.tfstate` files are usually saved on a cloud storage
+- We can find terraform providers and core modules in [https://registry.terraform.io/](https://registry.terraform.io/)
+- Terraform versioning uses SemVer
+- Patch versions will only contain bug fixes
+- Terraform deliver new features when they release minors and usually introduce breaking changes
+- There's no major versions yet
+- We can use aliases with providers to have more than one provider of the same type:
+    ```terraform
+    provider "azurerm" {
+
+    }
+
+    provider "azurerm" {
+        alias = "myalias"
+    }
+
+    # usage
+    azurerm # will default to provider without alias
+    azurerm.myalias # will default to provider with alias= "myalias"
+    ```
 
 # Additional notes
 
 - I was hoping for a better introduction, specially regarding Terraform documentation. Where to find it, how to use it, etc. We jumped right into declaring/using variables and using the terraform console.
+- From what I understood Terraform code is not sequential, meaning that Terraform will undestand which blocks of code will read first (need to confirm this though) #TODO
