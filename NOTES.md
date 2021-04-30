@@ -74,8 +74,13 @@
     azurerm # will default to provider without alias
     azurerm.myalias # will default to provider with alias= "myalias"
     ```
+- `terraform fmt` formats terraform code
+- `terraform taint` marks the resource to be destroyed and created (recreated) in the next `terraform apply`
+- `terraform import` imports resources that were manually created. We must create the terraform code of this resource first and only then run the import command
+- 
 
 # Additional notes
 
-- I was hoping for a better introduction, specially regarding Terraform documentation. Where to find it, how to use it, etc. We jumped right into declaring/using variables and using the terraform console.
+- I was hoping for a better introduction, specially regarding Terraform documentation. Where to find it, how to use it, etc. We jumped right into declaring/using variables and using the terraform console
 - From what I understood Terraform code is not sequential, meaning that Terraform will undestand which blocks of code will read first (need to confirm this though) #TODO
+- Virtual machine provisioning is becoming less frequent nowadays because the heavy use of containers and orchestrators
