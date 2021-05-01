@@ -77,7 +77,23 @@
 - `terraform fmt` formats terraform code
 - `terraform taint` marks the resource to be destroyed and created (recreated) in the next `terraform apply`
 - `terraform import` imports resources that were manually created. We must create the terraform code of this resource first and only then run the import command
-- 
+- `terraform state` manipulate terraform state file
+- `terraform workspace` create or change workspace
+- terraform starts with a sinle workspace `default`. We can create a new workspace `terraform workspace new <workspace-name>`
+- When creating a new workspace we start with an empty terraform state
+- `terraform workspace select <workspace-name>` to switch between workspaces
+- We can use the variable `${terraform.workspace}` to avoid naming colisions between workspaces
+    ```terraform
+    resoure "azurerem_virtual_machine" "myvm" {
+        name = "/myapp/myname-${terraform.workspace}"
+        ...
+    }
+    ```
+- Even though a workspace gives you an "empty state", we're still using the **same state**, the **same backend configuration** (workspaces are technically equivalent of renaming the state file)
+- For isolating environments we usually separate them by using different subscdiptions with different backends, stored in different state files
+- `TF_LOG=DEBUG` (env var) will enable debug loggin on terraform. If we just want to enable it JIT use `TF_LOG=DEBUG terraform <command >`
+- Valid log levels are: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`
+
 
 # Additional notes
 
