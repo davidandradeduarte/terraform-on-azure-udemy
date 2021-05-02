@@ -93,7 +93,33 @@
 - For isolating environments we usually separate them by using different subscdiptions with different backends, stored in different state files
 - `TF_LOG=DEBUG` (env var) will enable debug loggin on terraform. If we just want to enable it JIT use `TF_LOG=DEBUG terraform <command >`
 - Valid log levels are: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`
-
+- `terraform validate` validates syntax errors in terraform files
+- `terraform force-unlock <id>` can be used to force unlock the state file, in case there's a lock but nobody is running a terraform apply
+- `terraform refresh` will update the state file without applying
+- terraform state file might contain secrets (e.g database admin password)
+- 3 types of variables in terraform: `input`, `output` and `local`
+- input:
+    ```terraform
+    variable "my-input" { ... }
+    ```
+- output:
+    ```terraform
+    output "my-output" { ... }
+    ```
+- local:
+    ```terraform
+    locals { 
+        my-local = my-value
+        ...
+    }
+    ```
+- input variables can have the following optional arguments:
+    1. default
+    1. type
+    1. description
+    1. validation
+    1. sensitive
+- `any` is a generic type that accepts all value types
 
 # Additional notes
 
