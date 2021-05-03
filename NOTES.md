@@ -128,8 +128,36 @@
     1. sensitive
 - `any` is a generic type that accepts all value types
 
+# Azure concepts
+
+- **Resource Manager** - deployment and management service in Azure. It's the management layer to create, update and delete resources in the Azure subscription. AzureRM plugin uses the Azure SDK to connect to the Resource Manager. The resource manager provides authentication and authorization.
+![Resource Manager](/img/resource-manager.png)
+**Scopes**
+    - **Management Groups** - Groups to manage your subscriptions
+    - **Subscriptions** - Trials, Pay as you go, or Enterprise Agreements
+    - **Resource Groups** - Container that holds your resources
+    - **Resources** - VNets, VMs, Storage, ...
+- A resource can only exist within a single Resource Group
+- A resource from one Resource Group can still use a resource from another resource group if the permissions allow it
+- Resources can me moved between resource groups
+- Role Based Access Control (RBAC) can be applied on the resource group level, allowing you to provide access to users on a resource group level
+- **Virtual Networks** or **VNet** provides you with a private network in Azure. It's the first resource we need to have before creating VMs and other services that need private network connectivity. We need to specify the location (region) and the address space (private IP range). E.g 192.168.0.0/16, 10.0.0.0/8, etc
+- We can create subnets inside a VNet to logically separate resources on IP ranges
+- When creating a subnet, Azure will reserve 5 IP addresses for own use:
+    1. X.X.X.0 - Network address
+    1. X.X.X.1 - Reserved by Azure for the default gateway
+    1. X.X.X.2, X.X.X.3 - Reserved by Azure to map the Azure DNS IPs to the VNet space
+    1. X.X.X.255 - Network broadcast address
+- For each subnet Azure will create a default route table to ensure that IP addresses can be routed to other subnets, virtual networks, VPN or the internet. We can override the default routes by creating our own custom routes
+
+- Azure Virtual Machines
+- Network Security Groups & Appliaction Security Groups
+- Availability
+- (Auto)Scaling & Load Balancing
+
+
 # Additional notes
 
-- I was hoping for a better introduction, specially regarding Terraform documentation. Where to find it, how to use it, etc. We jumped right into declaring/using variables and using the terraform console
+- I was hoping for a better introduction, specially regarding Terraform documentation. Where to find it, how to use it, etc. We jumped right into declaring/using variables and using the terraform console (edit: this came much later in the course)
 - From what I understood Terraform code is not sequential, meaning that Terraform will undestand which blocks of code will read first (need to confirm this though) #TODO
 - Virtual machine provisioning is becoming less frequent nowadays because the heavy use of containers and orchestrators
