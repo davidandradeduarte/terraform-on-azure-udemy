@@ -149,9 +149,14 @@
     1. X.X.X.2, X.X.X.3 - Reserved by Azure to map the Azure DNS IPs to the VNet space
     1. X.X.X.255 - Network broadcast address
 - For each subnet Azure will create a default route table to ensure that IP addresses can be routed to other subnets, virtual networks, VPN or the internet. We can override the default routes by creating our own custom routes
+- **Azure Virtual Machines** - we can search for available images in the marketplace or `az list vm`. There's a lot of properties we need to set, like profile, storage, network, resource group, etc. I wont go into more detail on VM's. First their use is becoming less and less common now a days. Second when you need to create a VM, we usually just read throught the documentation and provide each necessary property
+- **Network Security Groups & Appliaction Security Groups** - can filter from/to Azure resources. They consist of security rules each with their own priority. We can set rules on source/destination IP/port ranges or service tags/application security groups, provide the IP protocol (TCP/UDP/ICMP/Any), the direction (incoming/outgoing) and action (allow/deny)
+- **Inbound default rules:** By default there's a security rule to block all inbound connections to any protocol, ip, port. There are two exceptions by default: if the source is an Azure Virtual Network or an Azure Load Balancer
+- **Outbound default rules:*** By default there's a security rule to allow all outbound internet connections. There's also a rule to allow all Virtual Network connections
+- **Appliaction Security Groups** can group virtual machines and multiple network interfaces. They're just a way of logically separating your virtual machines and can be handy when creating security groups and rules
+![Application Security Groups](/img/application-security-groups.png)
 
-- Azure Virtual Machines
-- Network Security Groups & Appliaction Security Groups
+
 - Availability
 - (Auto)Scaling & Load Balancing
 
