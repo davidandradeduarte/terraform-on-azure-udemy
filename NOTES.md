@@ -53,6 +53,13 @@
     ```
 - We can use a `*.tfvars` file to manage variable default values
 - Resource's reference name must be unique
+- variable types are infered and not mandatory, but it's recommended to allways set variable types
+- Terraform simple types: `string`, `number`, `bool`
+- Terraform complex type: `list(type)`, `set(type)`, `map(type)`, `objetc({<attr name> = <type>, ...})`, `tuple([<type>, ...])`
+- `terraform apply` will read all `*.tf` files and apply the terraform code to the cloud provider that we configured
+- `terraform plan` will create an execution plan, without running the changes on the cloud provider
+- `terraform init` is used to initialize a working directory containing Terraform configuration files. We also need to run it every time we add a new module or provider
+- `terraform destroy` will remove all the infrastructure
 - `*.tfstate` saves the state of created resources. It will be updated if you make manual changes in the cloud provider's UI and once you run `terraform plan`
 - `*.tfstate` files are usually saved on a cloud storage
 - We can find terraform providers and core modules in [https://registry.terraform.io/](https://registry.terraform.io/)
