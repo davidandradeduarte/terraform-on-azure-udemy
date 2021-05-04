@@ -155,10 +155,9 @@
 - **Outbound default rules:*** By default there's a security rule to allow all outbound internet connections. There's also a rule to allow all Virtual Network connections
 - **Appliaction Security Groups** can group virtual machines and multiple network interfaces. They're just a way of logically separating your virtual machines and can be handy when creating security groups and rules
 ![Application Security Groups](/img/application-security-groups.png)
-
-
-- Availability
-- (Auto)Scaling & Load Balancing
+- **Availability Zones** - protect applications and data from datacenter failures. Not all regions support availability zones, we can check here: [https://azure.microsoft.com/en-us/global-infrastructure/geographies/](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
+- **(Auto)Scaling & Load Balancing** - scale sets can manually or automatically scale up or down a group of VMs. Horizontal scaling. Typically we put a Load Balancer in front of the VMs to handle the requests over the multiple VMs. Scale sets can save money because they scale up when demand is high and down when demand is low
+- 
 
 
 # Additional notes
