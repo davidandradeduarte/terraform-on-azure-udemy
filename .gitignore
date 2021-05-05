@@ -63,7 +63,5 @@ override.tf.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,terraform
 
-exercises/first-steps/mykey
-exercises/first-steps/mykey.pub
-exercises/network-security-groups/mykey
-exercises/network-security-groups/mykey.pub
+mykey
+mykey.pub
