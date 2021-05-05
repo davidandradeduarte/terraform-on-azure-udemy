@@ -128,6 +128,8 @@
     1. sensitive
 - `any` is a generic type that accepts all value types
 - Azure AD uses a different terraform provider: `azuread`
+- By default Terraform stores the state locally
+- Remote state is a feature of terraform backends
 
 # Azure concepts
 
