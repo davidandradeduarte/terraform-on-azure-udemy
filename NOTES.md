@@ -158,6 +158,11 @@
 - **Availability Zones** - protect applications and data from datacenter failures. Not all regions support availability zones, we can check here: [https://azure.microsoft.com/en-us/global-infrastructure/geographies/](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
 - **(Auto)Scaling & Load Balancing** - scale sets can manually or automatically scale up or down a group of VMs. Horizontal scaling. Typically we put a Load Balancer in front of the VMs to handle the requests over the multiple VMs. Scale sets can save money because they scale up when demand is high and down when demand is low
 
+# Azure Services
+
+- **Azure Database for MySQL** - managed mysql database with automatic patching, backups, built-in monitoring and SSL connections. High availability. Every traffic is routed through an **Azure Gateway** to the MySQL server(s)
+- **Azure SQL Database** - managed relational database with automatic upgrading, patching, backups and monitoring. It provides geo-replication, point-in-time restores, auto-failover groups and zone-redundant databases. It's a fork of SQL Server on the cloud as a managed service
+- **Cosmos DB** - globally distributed, multi-model database service. Relational, NoSQL, Graphs. Elastic scale. Very fast. Supports multiple APIs - SQL, MongoDB, Cassandra, Gremlin, Table
 
 # Additional notes
 
