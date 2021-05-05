@@ -127,6 +127,7 @@
     1. validation
     1. sensitive
 - `any` is a generic type that accepts all value types
+- Azure AD uses a different terraform provider: `azuread`
 
 # Azure concepts
 
@@ -153,7 +154,7 @@
 - **Network Security Groups & Appliaction Security Groups** - can filter from/to Azure resources. They consist of security rules each with their own priority. We can set rules on source/destination IP/port ranges or service tags/application security groups, provide the IP protocol (TCP/UDP/ICMP/Any), the direction (incoming/outgoing) and action (allow/deny)
 - **Inbound default rules:** By default there's a security rule to block all inbound connections to any protocol, ip, port. There are two exceptions by default: if the source is an Azure Virtual Network or an Azure Load Balancer
 - **Outbound default rules:*** By default there's a security rule to allow all outbound internet connections. There's also a rule to allow all Virtual Network connections
-- **Appliaction Security Groups** can group virtual machines and multiple network interfaces. They're just a way of logically separating your virtual machines and can be handy when creating security groups and rules
+- **Application Security Groups** can group virtual machines and multiple network interfaces. They're just a way of logically separating your virtual machines and can be handy when creating security groups and rules
 ![Application Security Groups](/img/application-security-groups.png)
 - **Availability Zones** - protect applications and data from datacenter failures. Not all regions support availability zones, we can check here: [https://azure.microsoft.com/en-us/global-infrastructure/geographies/](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
 - **(Auto)Scaling & Load Balancing** - scale sets can manually or automatically scale up or down a group of VMs. Horizontal scaling. Typically we put a Load Balancer in front of the VMs to handle the requests over the multiple VMs. Scale sets can save money because they scale up when demand is high and down when demand is low
@@ -163,6 +164,20 @@
 - **Azure Database for MySQL** - managed mysql database with automatic patching, backups, built-in monitoring and SSL connections. High availability. Every traffic is routed through an **Azure Gateway** to the MySQL server(s)
 - **Azure SQL Database** - managed relational database with automatic upgrading, patching, backups and monitoring. It provides geo-replication, point-in-time restores, auto-failover groups and zone-redundant databases. It's a fork of SQL Server on the cloud as a managed service
 - **Cosmos DB** - globally distributed, multi-model database service. Relational, NoSQL, Graphs. Elastic scale. Very fast. Supports multiple APIs - SQL, MongoDB, Cassandra, Gremlin, Table
+- **Azure Storage** - virtually limitless, pay-as-you-go, multiple programming language clients. It provides durability, high availability, scalability, security and accessibility. The current different storage types are:
+    - BLOB Storage - unstructured data and files
+    - Table Storage - NoSQL data, schemaless
+    - File Storage - fully managed file share
+    - Queue Storage - message storage queue
+    - Data Lake Gen2 - big data analysis
+    - Disk Storage - virtual hard disks, encryption, disk roles, snapshots
+- **Azure Active Directory** - Cloud based identity and access management. Works for external and internal access
+- **Azure AD Connect** - tool for connecting on premisses identity infrastructure to microsoft's Azure Active Directory
+- Azure AD works for *B2C* AND *B2B*
+- **User/Service Principal** - security principal defines the access policy and permissions for the user/application in the Azure AD tenant
+- **Application Gateway** - web traffic load balancer. Operates on the OSI layer 7 (application). SSL/TLS termination. Request based routing. Web application firewall. Can be used as a Kubernetes Ingress Controller
+- **Azure Stream Analytics** - Real time analytics and complex event processing engine. Sensors, clickstreams, social media feeds, applications, etc. SAQL (Stream Analytics Query Language) SQL like query. Serverless, scaled and fully managed. Can ingest data and forward it to databases, event hubs, azure functions, power BI, processors, etc
+![Azure Stream Analytics](/img/azure-stream-analytics.png)
 
 # Additional notes
 
