@@ -152,7 +152,8 @@
         for_each = var.list
     ```
 - There's not good support within Terraform for Azure DevOps at this time
-
+- By default Terraform stores the state locally
+- Remote state is a feature of terraform backends
 
 # Azure concepts
 
