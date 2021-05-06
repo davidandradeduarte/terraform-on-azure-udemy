@@ -41,7 +41,8 @@
     ```terraform
     var.mylist[0]
     ```
-- There's a set of default functions that Terraform provide, like `element`, `slice`, etc. Documentation: [https://www.terraform.io/docs/language/functions/index.html](https://www.terraform.io/docs/language/functions/index.html)
+- There's a set of default built-in functions that Terraform provide, like `element`, `slice`, etc. Documentation: [https://www.terraform.io/docs/language/functions/index.html](https://www.terraform.io/docs/language/functions/index.html)
+- There's no support for user defined functions
 - When using resources we need to define the provider for those resources. Whether that be AWS, Azure, GCP, or any other supported providers.
 - Example for creating an aws resource:
     ```terraform
@@ -128,6 +129,30 @@
     1. sensitive
 - `any` is a generic type that accepts all value types
 - Azure AD uses a different terraform provider: `azuread`
+- We can create a remote state in terraform azure by creating a resource group with a storage account and a container, and associate it with the backend:
+    ```terraform
+    terraform {
+        backend "azurerm" {
+            resource_group_name  = "terraform-state"
+            storage_account_name = "tfstoragetrainingdavid"
+            container_name       = "terraform-state-container"
+            key                  = "terraform.tfstate"
+        }
+    }
+    ```
+- **Conditionals** - basically ternary operations `condition ? true_val : false_val`
+- We can override variables by providing `--var var_name=var_value` to the terraform CLI
+- We can use `for` and `for_each` loops in Terraform
+    ```terraform
+        # for
+        [for s in var.list : upper(s)]
+
+        # for_each is a meta argument to be used inside a resource
+        # it creates as many resources as the for_each list length
+        for_each = var.list
+    ```
+- There's not good support within Terraform for Azure DevOps at this time
+
 
 # Azure concepts
 
@@ -158,6 +183,8 @@
 ![Application Security Groups](/img/application-security-groups.png)
 - **Availability Zones** - protect applications and data from datacenter failures. Not all regions support availability zones, we can check here: [https://azure.microsoft.com/en-us/global-infrastructure/geographies/](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
 - **(Auto)Scaling & Load Balancing** - scale sets can manually or automatically scale up or down a group of VMs. Horizontal scaling. Typically we put a Load Balancer in front of the VMs to handle the requests over the multiple VMs. Scale sets can save money because they scale up when demand is high and down when demand is low
+- **Azure DevOps** provides CI/CD pipelines to build, test and deploy our applications
+- We can push our built images to **Azure Container Registry**
 
 # Azure Services
 
@@ -178,6 +205,7 @@
 - **Application Gateway** - web traffic load balancer. Operates on the OSI layer 7 (application). SSL/TLS termination. Request based routing. Web application firewall. Can be used as a Kubernetes Ingress Controller
 - **Azure Stream Analytics** - Real time analytics and complex event processing engine. Sensors, clickstreams, social media feeds, applications, etc. SAQL (Stream Analytics Query Language) SQL like query. Serverless, scaled and fully managed. Can ingest data and forward it to databases, event hubs, azure functions, power BI, processors, etc
 ![Azure Stream Analytics](/img/azure-stream-analytics.png)
+- **AKS** - Azure Kubernetes Service is Azure's fully managed Kubernetes offering which integrates with all the other Azure services
 
 # Additional notes
 
